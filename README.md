@@ -9,9 +9,10 @@ export ACCESS_TOKEN=<ACCESS_TOKEN>
 pip install hvac pyjwt
 ```
 - Comment/uncomment correct server setting according to Identity provider in the file "secrets.py"
+
 - Execute the example
 ```commandline
 python secrets.py
 ```
-
+- Check the code to see how it works
 

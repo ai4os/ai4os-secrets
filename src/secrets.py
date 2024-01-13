@@ -63,21 +63,22 @@ home_path = "users/" + user_id + "/"
 # home_path (with sub from access token)
 ################################################################################
 
-# Initializing the client
+# First of all, init the client
 client = hvac.Client(url=VAULT_ADDR)
 client.auth.jwt.jwt_login(role=VAULT_ROLE, jwt=access_token, path=VAULT_AUTH_PATH)
 
-# Create/update a secret with name "test01" with key:value {"password":"123456"}
+# Create/update a secret with name "test01" with key:value {"username":"abcdef", "password":"123456"}
+# by calling the corresponding function of the client
 
 print("Creating/updating a secret 'test01'")
 
 client.secrets.kv.v1.create_or_update_secret(
     path=home_path + "test01",
     mount_point=VAULT_MOUNT_POINT,
-    secret={"password": "123456"},
+    secret={"username": "abcdef", "password": "123456"},
 )
 
-# Listing secrets in home path. If listing sub-folder, just add the folder to the path
+# Listing secrets in home path. You may list also sub-folder in the home path, just add the sub-folder to the path
 
 print("Listing secrets")
 
@@ -85,11 +86,12 @@ response = client.secrets.kv.v1.list_secrets(
     path=home_path + "",
     mount_point=VAULT_MOUNT_POINT,
 )
+# Extract the list of secrets in the path from  response
 secrets_list = map(str, response["data"]["keys"])
 
 print("\n".join(secrets_list))
 
-# Reading the secret "test01"
+# Reading the secret 'test01'
 
 print("Reading the secret 'test01'")
 
@@ -97,11 +99,12 @@ response = client.secrets.kv.v1.read_secret(
     path=home_path + "test01",
     mount_point=VAULT_MOUNT_POINT,
 )
+# Extract the secret data in dict {key:value} format from response
 secret = response["data"]
 
 print(json.dumps(secret))
 
-# Deleting a secret
+# Deleting the secret 'test01'
 print("Deleting the secret 'test01'")
 
 client.secrets.kv.v1.delete_secret(
