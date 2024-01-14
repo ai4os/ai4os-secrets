@@ -8,7 +8,8 @@ export ACCESS_TOKEN=<ACCESS_TOKEN>
 ```commandline
 pip install hvac pyjwt
 ```
-- Comment/uncomment correct server setting according to Identity provider in the file "secrets.py"
+- Comment/uncomment correct server setting according to Identity provider (EGI Checkin Prod/Dev/Demo or AI4EOSC IAM) 
+in the file "secrets.py"
 
 - Execute the example
 ```commandline

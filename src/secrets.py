@@ -28,6 +28,15 @@ VAULT_ROLE = ""
 VAULT_MOUNT_POINT = "/secrets/"
 """
 
+# For authentication with access token from EGI Demo Checkin, uncomment
+# the following section
+"""
+VAULT_ADDR = "https://secrets.services.ai4os.eu:8200"
+VAULT_AUTH_PATH = "jwt-egi-demo"
+VAULT_ROLE = ""
+VAULT_MOUNT_POINT = "/secrets/"
+"""
+
 # For authentication with access token from AI4EOSC IAM, uncomment
 # the following section
 """
@@ -55,11 +64,11 @@ home_path = "users/" + user_id + "/"
 ################################################################################
 # End of environment setting. Start the example code of secret manipulation
 # Make sure following variables are set:
-# VAULT_ADDR
-# VAULT_AUTH_PATH
+# VAULT_ADDR (that depends on Identity provider)
+# VAULT_AUTH_PATH (that depends on Identity provider)
 # VAULT_ROLE (may leave empty)
-# VAULT_MOUNT_POINT
-# access_token
+# VAULT_MOUNT_POINT (should be "/secrets/")
+# access_token (for authentication)
 # home_path (with sub from access token)
 ################################################################################
 
