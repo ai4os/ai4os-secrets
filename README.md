@@ -52,7 +52,7 @@ response = client.secrets.kv.v1.read_secret(
 )
 ```
 
-- Extract output data from responses for listing and reading operations. Creating/deleting operations do not return 
+- For listing and reading operations, extract output data from responses. Creating/deleting operations do not return 
 any data 
 
 ```python
