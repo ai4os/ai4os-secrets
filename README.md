@@ -28,7 +28,7 @@ python secrets.py
 
 Each operation is divided into three steps:
 
-- Initialize the client
+- Initialize the client. An valid access token is needed for authentication
 
 ```python
 client = hvac.Client(url=VAULT_ADDR)
