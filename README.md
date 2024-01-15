@@ -24,7 +24,7 @@ VAULT_MOUNT_POINT = "/secrets/"
 python secrets.py
 ```
 
-# How the code works
+## How the code works
 
 Each operation is divided into three steps:
 
